@@ -1,95 +1,71 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+import SideBar from "../../public/components/SideBar";
+import DebitCards from "../../public/components/DebitCards";
+import Account from "../../public/components/Account";
+import Transaction from "../../public/components/Transaction";
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+    <div className="h-75 col-12 d-flex">
+      <div className="col-4 p-3">
+        <div className=" p-3">
+          <h3>Send Money</h3>
+          {/* <DebitCards /> */}
+          <Account
+            cardType="Debit"
+            balance="$10,344"
+            cardImage="../icons/mastercard.svg"
+          />
+          <Account
+            cardType="Debit"
+            balance="£236,344"
+            cardImage="../icons/visa.svg"
+          />
         </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+      </div>
+      <div className=" col-8 p-4">
+        <h3>Transactions</h3>
+        <div className=" pt-3">
+          <Transaction
+            recipient="to Alice"
+            date="Feb 15, 2021"
+            transactionId="*****56789"
+            amount="-$200"
+            status="success"
           />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
+          <Transaction
+            recipient="to Bob"
+            date="Mar 10, 2022"
+            transactionId="*****12345"
+            amount="-$50"
+            status="pending"
           />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
+          <Transaction
+            recipient="to Carol"
+            date="Jan 5, 2023"
+            transactionId="*****67890"
+            amount="-$300"
+            status="failed"
           />
-          Go to nextjs.org →
-        </a>
-      </footer>
+          <Transaction
+            recipient="to Daniel"
+            date="Dec 25, 2021"
+            transactionId="*****23456"
+            amount="+$150"
+            status="success"
+          />
+          <Transaction
+            recipient="to Eve"
+            date="Oct 18, 2020"
+            transactionId="*****98765"
+            amount="-$400"
+            status="success"
+          />
+        
+         
+        </div>
+      </div>
     </div>
   );
 }
